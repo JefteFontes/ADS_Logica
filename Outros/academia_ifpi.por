@@ -32,7 +32,7 @@ programa
 		}
 	}
 	
-funcao valorPagar(real vetor[], inteiro t){
+	funcao valorPagar(real vetor[], inteiro t){
 		real valor = vetor[t]
 		escreva("Informe o número de pessoas inclusas no plano: ")
 		leia(num_pessoas)
