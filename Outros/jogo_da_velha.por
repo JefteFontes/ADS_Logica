@@ -22,7 +22,7 @@ programa
 		se((jogo1[0][0] == jogo1[1][1]) e (jogo1[1][1] == jogo1[2][2])){
 				retorne jogo1[0][0]
 		} senao se((jogo1[0][2] == jogo1[1][1]) e (jogo1[1][1] == jogo1[2][0])){
-				retorne jogo1[0][0]
+				retorne jogo1[0][2]
 		}
 		retorne " "
 	}
