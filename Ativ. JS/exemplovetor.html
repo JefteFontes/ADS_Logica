@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banco de Dados Pirata</title>
+</head>
+<body>
+    <h1>Calculo de km/h</h1>
+    <fieldset>
+        <div>
+            <label>
+                Nome:
+                <input type="input" id="nome"><br>
+            </label>
+            <label>
+                Idade: 
+                <input type="input" id="idade"><br>
+                <button onclick= bancoDeDados() value=>Enviar</button>
+            </label>
+        </div>  
+    </fieldset>
+    <script>
+        function bancoDeDados(){
+            class Pessoa{
+                nome 
+                idade
+
+                constructor(nNome, nIdade){
+                    this.nome = nNome
+                    this.idade = nIdade
+                }
+            }
+            let agenda = []
+            let aluno = new Pessoa()
+            aluno.nome = document.getElementById("nome").value
+            aluno.idade = parseInt(document.getElementById("idade").value)
+            if (aluno.nome === "Jefté Fontes" && aluno.idade >= 18) {
+                agenda[0] = aluno
+                console.log(agenda[0])
+                console.log(agenda)
+            }else 
+                alert("Acesso Negado!!")
+            
+        }
+
+        /*
+        //1º Objeto
+        let aluno = new Pessoa("Jefté", 18)
+        agenda[0] = aluno
+        //2º Objeto
+        let aluno1 = new Pessoa("Killian", 24)
+        agenda[1] = aluno1
+        //3º Objeto
+        let aluno2 = new Pessoa("Lorena", 20)
+        agenda[2] = aluno2
+
+        for(let i = 0; i < 3; i++){
+            console.log("Meu nome é "+(agenda[i].nome)+" e tenho "+(agenda[i].idade)+" anos")
+        }
+        */
+    </script>
+</body>
+</html>

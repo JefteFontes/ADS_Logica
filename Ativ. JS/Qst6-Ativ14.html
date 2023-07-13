@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Salário</title>
+</head>
+<body>
+    <script>
+        let anos = parseFloat(prompt("Informe o tempo de serviço em anos: "))
+        let salario = parseFloat(prompt("Informe o salário atual: "))
+        if(anos >= 5 && salario < 2500)
+        document.write("<h1>Novo salário: "+(salario += salario * 0.2)+"R$</h1>")
+        else 
+        document.write("<h1>Novo salário: "+(salario += salario *0.05)+"R$</h1>")
+    </script>
+</body>
+</html>

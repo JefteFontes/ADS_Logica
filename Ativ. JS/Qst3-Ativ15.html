@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Letra c</title>
+    </head>
+    <body>
+        <h1>Lista de números</h1>
+        <fieldset>
+            <div>
+                <label>
+                    Número:
+                    <input type="number" id="num" placeholder = "Digite um número"><br>
+                </label>
+                <label>
+                    <button id="btEnviar">Inserir</button>
+                    <button id="btPsq">Pesquisar</button>
+                </label>
+            </div>  
+        </fieldset>
+        <br>
+        <section id = "saída">
+
+        </section>
+        <script>
+            let agenda = []
+            let num
+            let pos = 0
+
+            let btEnviar = document.getElementById("btEnviar")
+            btEnviar.addEventListener("click", () => {
+                num = document.getElementById("num").value
+                inserir(num)
+                limpar()
+            })
+            
+            let btPsq = document.getElementById("btPsq")
+            btPsq.addEventListener("click", () => {
+                num = document.getElementById("num").value
+                if (pesquisa(num) != null) {
+                    let escreva = document.getElementById("saída")
+                    escreva.textContent = "Número encontrado: "+ pesquisa(num)
+                    limpar()
+                } else {
+                    alert("Número não encontrado")
+                    limpar()
+                }
+            })
+            if () {}
+                for (let i = 0; i <= lista.length; i++) {
+                    console.log(lista.length)
+                    if (lista[i] == ""){
+                        lista[i] = carro
+                    }
+                }
+
+            function inserir(numero){
+                agenda[pos] = numero
+                pos++
+            }
+
+            function pesquisa (num_pesqui){
+                for (let i = 0; i < agenda.length; i++) {
+                    if (agenda[i] == num_pesqui) {
+                        return agenda[i]
+                    }
+                }
+                return null
+            }
+
+            function limpar (){
+                document.getElementById("num").value = ""
+            }
+        </script>
+    </body>
+</html>

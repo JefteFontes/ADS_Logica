@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cadastro de Veiculos</title>
+    </head>
+    <body>
+        <h1>Cadastramento de carro</h1>
+        <fieldset>
+            <div>
+                <h2>Cadastar</h2>
+                <label>
+                    Placa:
+                    <input type="input" id="placa" placeholder = "Digite a placa"><br>
+                </label>
+                <label>
+                    Proprietário:
+                    <input type="input" id="prop" placeholder = "Digite o nome"><br>
+                </label>
+                 <label>
+                    Modelo:
+                    <input type="input" id="modelo" placeholder = "Digite o modelo"><br>
+                </label>
+                <label>
+                    <button id="btEnviar">Cadastrar</button>
+                </label>
+                <h2>Pesquisar</h2>
+                <label>
+                    Placa:
+                    <input type="input" id="placa1" placeholder = "Digite a placa"><br>
+                </label>
+                <label>
+                    <button id="btPsq">Pesquisar</button>
+                </label>
+                <h2>Exclusão</h2>
+                <label>
+                    Placa:
+                    <input type="input" id="placa2" placeholder = "Digite a placa"><br>
+                </label>
+                <label>
+                    <button id="btExclu">Excluir</button>
+                    <button id="btLis" class="btList">Exibir lista</button>
+                    <button id="btOcultar" class="btOcult">Ocultar lista</button>
+                </label>
+            </div>  
+        </fieldset>
+        <section id = "lista">
+
+        </section>
+        <script>
+            document.querySelector(".btOcult").style.display = "none"
+
+            let lista = []
+            let pos = 0
+
+            class Carro{
+                placa
+                prop
+                modelo
+
+                constructor(nPlaca, nProp, nModel){
+                    this.placa = nPlaca
+                    this.prop = nProp
+                    this.modelo = nModel
+                }
+            }
+
+            let btEnviar = document.getElementById("btEnviar")
+            btEnviar.addEventListener("click", () => {
+                let novoCarro = new Carro()
+                novoCarro.placa = document.getElementById("placa").value    
+                novoCarro.prop = document.getElementById("prop").value
+                novoCarro.modelo = document.getElementById("modelo").value
+                cadastrar(novoCarro)
+                console.log(lista)
+                limpar()
+            })
+
+            let btPsq = document.getElementById("btPsq")
+            btPsq.addEventListener("click", () => {
+                let placa_Procu = document.getElementById("placa1").value
+                let resultado = pesquisa(placa_Procu)
+                if (resultado != null) {
+                    let escreva = document.getElementById("lista")
+                    escreva.innerHTML = ""
+                    escreva.innerHTML = "<p>Placa encontrada: "+resultado.placa+" <br> Propietário: "+resultado.prop+" <br> Modelo: "+resultado.modelo+"</p>"
+                    limpar()
+                } else {
+                    alert("Placa não cadastrada")
+                    limpar()
+                }
+            })
+
+            let btExclu = document.getElementById("btExclu")
+            btExclu.addEventListener("click", () => {
+                let placa_exclu = document.getElementById("placa2").value
+                let resultado2 = excluir(placa_exclu)
+                console.log(lista)
+                if (resultado2 != null) {
+                    let escreva = document.getElementById("lista")
+                    escreva.innerHTML = ""
+                    escreva.innerHTML = "Carro excluído com sucesso!"
+                    limpar()
+                } else {
+                    alert("Placa não cadastrada")
+                    limpar()
+                }
+            })
+
+            let btLis = document.getElementById("btLis")
+            btLis.addEventListener("click", () => {
+                let lista1 = document.getElementById("lista")
+                if (lista.length != 0) {
+                    for (var i = 0; i < lista.length; i++) {
+                        let escreva1 = document.createElement("div")
+                        lista1.appendChild(escreva1)
+                        escreva1.innerHTML = "<p> Carro "+(i+1)+"<br> Placa : "+lista[i].placa+" <br> Propietário: "+lista[i].prop+" <br> Modelo: "+lista[i].modelo+"</p>"
+                        document.querySelector(".btList").style.display = "none"
+                        document.querySelector(".btOcult").style.display = ""
+                    }
+                } else alert("Nenhum carro cadastrado!")
+                limpar()
+            })
+
+            let btOcultar = document.getElementById("btOcultar")
+            btOcultar.addEventListener("click", () => {
+                let lista_ocult = document.getElementById("lista")
+                lista_ocult.innerHTML = ""
+
+                document.querySelector(".btOcult").style.display = "none"
+                document.querySelector(".btList").style.display = ""
+            })
+            function cadastrar(carro){
+                lista[pos] = carro
+                pos++
+            }
+
+            function pesquisa (placa_psq){
+                for (let i = 0; i < lista.length; i++) {
+                    if (lista[i].placa == placa_psq) {
+                        return lista[i]
+                    }
+                }
+                return null
+            }
+
+            function excluir (placa_excluir){
+                let index = -1
+
+                for (let i = 0; i < lista.length; i++) {
+                    if (lista[i].placa == placa_excluir) {
+                        index = i
+                    }
+                }
+
+                if (index == -1) return null
+
+                for (let i = index; i < lista.length; i++) {
+                    lista[i] = lista[i + 1]
+                }
+
+                lista.length = lista.length - 1
+
+                return 'continua'
+            }
+
+
+            function limpar (){
+                document.getElementById("placa").value = ""
+                document.getElementById("prop").value = ""
+                document.getElementById("modelo").value = ""
+                document.getElementById("placa1").value = ""
+                document.getElementById("placa2").value = ""          
+            }
+        </script>
+    </body>
+</html>

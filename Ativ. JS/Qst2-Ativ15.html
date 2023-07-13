@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Questão 2</title>
+    </head>
+    <body>
+        <h1>Calculo de Potencia</h1>
+        <fieldset>
+            <div>
+                <label>
+                    Base:
+                    <input type="input" id="base"><br>
+                </label>
+                <label>
+                    Expoente: 
+                    <input type="input" id="expoente"><br>
+                    <button onclick = "calculoPoten()">Enviar</button>
+                </label>
+            </div>  
+        </fieldset>
+        <script>
+            function potencia(b, exp) {
+               var resu = b
+
+               for(let i = 1; i < exp; i++){
+                    resu *= b 
+               }
+               return resu
+            }
+
+            function calculoPoten(){
+                var base = parseInt(document.getElementById("base").value)
+                var expoente = parseInt(document.getElementById("expoente").value)
+
+                console.log(potencia(base,expoente))
+            }
+        </script>
+    </body>
+</html>
