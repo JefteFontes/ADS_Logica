@@ -14,5 +14,5 @@ O repositório está organizado da seguinte forma:
 
 ## Tecnologias utilizadas
 
-- Linguagem de Programação: ***Portugol***
-- Ambiente de desenvolvimento: ***Portugol Studio***
+- Linguagem de Programação: ***Portugol***, ***JavaScript***
+- Ambiente de desenvolvimento: ***Portugol Studio***, ***Visual Studio***
